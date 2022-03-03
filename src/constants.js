@@ -16,3 +16,13 @@ export const WEIGHTS = {
   medium: 600,
   bold: 800,
 };
+
+const BREAKPOINTS = {
+  mobileMax: 500,
+  tabletMax: 1100,
+}
+
+export const QUERIES = {
+  'mobile': `(max-width: ${BREAKPOINTS.mobileMax / 16}rem)`,
+  'tablet': `(min-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
+}
