@@ -47,13 +47,14 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  border-top: 4px solid ${COLORS.gray[900]}
 `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
-  @media ${QUERIES.mobile} {
+  @media ${QUERIES.tabletAndSmaller} {
     border: solid red;
   }
 `;
