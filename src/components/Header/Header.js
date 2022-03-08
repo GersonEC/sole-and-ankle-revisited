@@ -3,9 +3,12 @@ import styled from 'styled-components/macro';
 
 import { COLORS, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
+import Icon from '../Icon';
+import UnstyledButton from '../UnstyledButton';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import {QUERIES} from '../../constants';
+import VisuallyHidden from '../VisuallyHidden';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -19,9 +22,9 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
+        </LogoWrapper>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -30,7 +33,21 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Side />
+        <MobileActions>
+          <UnstyledButton>
+            <Icon id="shopping-bag" />
+            <VisuallyHidden>Open cart</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="search" />
+            <VisuallyHidden>Search</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="menu" />
+            <VisuallyHidden>Menu</VisuallyHidden>
+          </UnstyledButton>
+        </MobileActions>
+        <Filler />
       </MainHeader>
 
       <MobileMenu
@@ -47,7 +64,17 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
-  border-top: 4px solid ${COLORS.gray[900]}
+
+  @media ${QUERIES.tabletAndSmaller} {
+    border-top: 4px solid ${COLORS.gray[900]};
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -55,13 +82,34 @@ const Nav = styled.nav`
   gap: 48px;
   margin: 0px 48px;
   @media ${QUERIES.tabletAndSmaller} {
-    border: solid red;
+    display: none;
   }
 `;
 
-const Side = styled.div`
+const MobileActions = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: flex;
+    gap: 32px;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    gap: 16px;
+  }
+`
+
+const LogoWrapper = styled.div`
   flex: 1;
+  @media ${QUERIES.tabletAndSmaller} {
+    flex: revert;
+  }
 `;
+
+const Filler = styled.div`
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
+`
 
 const NavLink = styled.a`
   font-size: 1.125rem;

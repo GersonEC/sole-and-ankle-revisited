@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 
 import SHOES from '../../data';
 import ShoeCard from '../ShoeCard';
+import {QUERIES} from '../../constants'
 
 const ShoeGrid = () => {
   return (
@@ -29,6 +30,7 @@ const Wrapper = styled.div`
 
     margin: 16px;
   */
+
 `;
 
 const ShoeWrapper = styled.div`
