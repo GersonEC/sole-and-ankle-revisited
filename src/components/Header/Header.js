@@ -62,7 +62,6 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 
   @media ${QUERIES.tabletAndSmaller} {
@@ -79,7 +78,11 @@ const MainHeader = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(
+    1rem,
+    8.1vw - 4rem,
+    3rem
+  );
   margin: 0px 48px;
   @media ${QUERIES.tabletAndSmaller} {
     display: none;
@@ -112,7 +115,7 @@ const Filler = styled.div`
 `
 
 const NavLink = styled.a`
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   text-decoration: none;
   color: ${COLORS.gray[900]};
